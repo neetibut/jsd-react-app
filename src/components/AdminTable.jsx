@@ -1,8 +1,4 @@
-import axios from "axios";
 import { useState } from "react";
-
-// const API_POST = "https://jsd5-mock-backend.onrender.com/members";
-// const API_DELETE = "https://jsd5-mock-backend.onrender.com/member";
 
 export function AdminTable({ users, setUsers, fetchUsers, API }) {
   const [form, setForm] = useState({
@@ -18,7 +14,12 @@ export function AdminTable({ users, setUsers, fetchUsers, API }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(API, form);
+      const res = await fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Failed to create user");
       await fetchUsers();
       // Reset the form
       setForm({
@@ -33,7 +34,7 @@ export function AdminTable({ users, setUsers, fetchUsers, API }) {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this user?")) return;
-    await axios.delete(`${API}/${id}`);
+    await fetch(`${API}/${id}`, { method: "DELETE" });
     setUsers(users.filter((user) => user.id !== id));
   };
 

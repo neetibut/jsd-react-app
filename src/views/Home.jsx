@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { UserTable } from "../components/UserTable";
 import { AdminTable } from "../components/AdminTable";
-import axios from "axios";
-
-// const API_GET = "https://jsd5-mock-backend.onrender.com/members";
 
 const API = "https://67eca027aa794fb3222e43e2.mockapi.io/members";
 
@@ -13,8 +10,10 @@ export default function Home() {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get(API);
-      setUsers(res.data);
+      const res = await fetch(API);
+      if (!res.ok) throw new Error("Failed to fetch users");
+      const data = await res.json();
+      setUsers(data);
     } catch {
       alert("Failed to fetch users");
     }
