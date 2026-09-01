@@ -31,6 +31,7 @@ export default function Owner() {
       >
         📽️ Battlestar Galactica (2004 TV series)
       </a>
+      <br />
     </div>
   );
 }
