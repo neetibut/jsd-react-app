@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { UserTable } from "../components/UserTable";
 import { AdminTable } from "../components/AdminTable";
 
-const API = "https://67eca027aa794fb3222e43e2.mockapi.io/members";
+const API = import.meta.env.VITE_API_URL;
 
 export default function Home() {
   const [view, setView] = useState(null);
