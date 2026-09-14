@@ -1,4 +1,5 @@
 export function UserTable({ users }) {
+  console.log("passed to User Table:", users);
   return (
     <div>
       <table className="w-full border-separate">
@@ -11,10 +12,10 @@ export function UserTable({ users }) {
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user.id} className="bg-white">
-              <td className="border p-2">{user.name}</td>
-              <td className="border p-2">{user.lastname}</td>
-              <td className="border p-2">{user.position}</td>
+            <tr key={user._id} className="bg-white">
+              <td className="border p-2">{user.username}</td>
+              <td className="border p-2">{user.email}</td>
+              <td className="border p-2">{user.role}</td>
             </tr>
           ))}
         </tbody>

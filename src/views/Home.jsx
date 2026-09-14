@@ -10,10 +10,11 @@ export default function Home() {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch(API);
+      const res = await fetch(`${API}/users`);
       if (!res.ok) throw new Error("Failed to fetch users");
       const data = await res.json();
       setUsers(data);
+      console.log("initial fetch:", data);
     } catch {
       alert("Failed to fetch users");
     }
