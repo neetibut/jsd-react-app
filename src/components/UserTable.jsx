@@ -5,9 +5,9 @@ export function UserTable({ users }) {
       <table className="w-full border-separate">
         <thead>
           <tr className="bg-gray-200">
-            <th className="border rounded-tl-lg p-2">Name</th>
-            <th className="border p-2">Last name</th>
-            <th className="border p-2 rounded-tr-lg">Position</th>
+            <th className="border rounded-tl-lg p-2">Username</th>
+            <th className="border p-2">Email</th>
+            <th className="border p-2 rounded-tr-lg">Role</th>
           </tr>
         </thead>
         <tbody>

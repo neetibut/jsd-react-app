@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Layout } from "./views/Layout";
 import Home from "./views/Home";
 import Owner from "./views/Owner";
+import { AuthProvider } from "./contexts/AuthProvider";
 
 const router = createBrowserRouter([
   {
@@ -16,5 +17,9 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
 }
